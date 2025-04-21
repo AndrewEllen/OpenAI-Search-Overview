@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "OpenAI Search Overview",
+  "version": "1.0",
+  "description": "Adds an OpenAI-powered overview toggle next to Google’s AI overview.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://api.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/search*"],
+      "js": ["showdown.min.js", "content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "options_page": "options.html"
+}
